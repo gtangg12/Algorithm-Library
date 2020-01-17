@@ -17,15 +17,15 @@ struct node {
 	}
 };
 
-void split(node *t, node *&l, node *&r, int k) {
+void split(node *t, node *&l, node *&r, int x) {
 	if (!t) {
 		l = r = NULL;
 		return;
 	}
-	if (k <= t->x)
-		r = t, split(t->l, l, t->l, k);
+	if (x <= t->x)
+		r = t, split(t->l, l, t->l, x);
 	else
-		l = t, split(t->r, t->r, r, k);
+		l = t, split(t->r, t->r, r, x);
 	t->pull();
 }
 
@@ -41,7 +41,7 @@ void merge(node *&t, node *l, node *r) {
 	t->pull();
 }
 
-node* find(node *t, int x) {
+node *find(node *t, int x) {
 	if (!t)
 		return NULL;
 	if (t->x == x)

@@ -57,7 +57,7 @@ void merge(node *&t, node *l, node *r) {
 	t->pull();
 }
 
-node* find_at(node *t, int i) {
+node *find_at(node *t, int i) {
 	if (!t)
 		return NULL;
 	t->push();
