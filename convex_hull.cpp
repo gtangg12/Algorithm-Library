@@ -9,6 +9,7 @@ double cross(pd a, pd b, pd c) {
 }
 
 void graham_scan(vpd &vp, vpd &vh) {
+	vh.clear();
 	sort(be(vp), en(vp));
 	vh = vpd(sz(vp)+1);
 	int idx = 0, mid;
@@ -17,7 +18,7 @@ void graham_scan(vpd &vp, vpd &vh) {
 			idx--;
 		vh[idx++] = vp[i];
 	}
-    mid = idx;
+	mid = idx;
 	for (int i = sz(vp)-2; i >= 0; i--) {
         while (idx > mid && cross(vh[idx-2], vh[idx-1], vp[i]) >= 0)
             idx--;
