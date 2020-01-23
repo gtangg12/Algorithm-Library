@@ -3,11 +3,9 @@
  */
 #include "header.h"
 
-#define MAXN 1048576
 #define BASE 31
 #define MOD 1000000009
 
-// single hash
 ll get_hash(string &s) {
 	ll v = 0, p = 1;
 	for (char c: s) {
@@ -17,7 +15,6 @@ ll get_hash(string &s) {
 	return v;
 }
 
-// hash all substr
 struct substr_hash {
 	int n;
 	vector<ll> A, P;
@@ -52,8 +49,7 @@ bool compare(substr_hash &s1, substr_hash &s2, int a, int b, int c, int d) {
 	return v1 == v2;
 }
 
-// Robin Karp
-// O(|s|+|t|) pattern finding when probability of collision is low
+// Rabin-Karp
 void robin_karp(string &s, string &t, vi &occ) {
 	int S = sz(s), T = sz(t);
 	substr_hash sh(s);
