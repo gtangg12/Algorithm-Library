@@ -10,6 +10,8 @@
 
 int N, M;
 vpi adj[MAXN];
+
+// sp single
 int dis[MAXN], par[MAXN];
 
 void dijkstra(int v) {

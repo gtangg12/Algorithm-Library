@@ -8,6 +8,8 @@
 
 int N, M;
 vpi adj[MAXN];
+
+// sp allpairs
 int dis[MAXN][MAXN], par[MAXN][MAXN];
 
 void floyd_warshall() {

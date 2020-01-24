@@ -5,7 +5,6 @@
 
 #define MAXN 262144
 
-// graph
 int N, M;
 vi adj[MAXN];
 

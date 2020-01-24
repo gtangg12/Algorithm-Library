@@ -50,7 +50,9 @@ bool compare(substr_hash &s1, substr_hash &s2, int a, int b, int c, int d) {
 }
 
 // Rabin-Karp
-void robin_karp(string &s, string &t, vi &occ) {
+vi occ;
+
+void robin_karp(string &s, string &t) {
 	int S = sz(s), T = sz(t);
 	substr_hash sh(s);
 	ll h = get_hash(t), ch;

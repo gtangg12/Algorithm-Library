@@ -20,7 +20,9 @@ void p_function(string &s) {
 	}
 }
 
-void kmp(string &s, string &t, vi &occ) {
+vi occ;
+
+void kmp(string &s, string &t) {
 	string r = s+'$'+t;
 	p_function(r);
 	int p = sz(s);

@@ -19,7 +19,9 @@ void z_function(string &s) {
 	}
 }
 
-void z_algorithm(string &s, string &t, vi &occ) {
+vi occ;
+
+void z_algorithm(string &s, string &t) {
 	string r = s+'$'+t;
 	z_function(r);
 	int p = sz(s);
