@@ -26,16 +26,16 @@ void dfs(int n) {
 	tour.pb(n);
 }
 
-void euler_tour(int s) {
+void euler_tour() {
 	fill(cur, cur+MAXN, 0);
 	vi odd;
-	for (int i = 1; i <= 500; i++)
+	for (int i = 1; i <= N; i++)
 		if (sz(adj[i])%2 != 0)
 			odd.pb(i);
-	if (sz(odd) == 2)     // tour
+	if (sz(odd) == 2) // tour
 		dfs(min(odd[0], odd[1]));
-	else if (sz(odd) == 0)     // cycle
-		dfs(s);
+	else if (sz(odd) == 0) // cycle
+		dfs(1);
 }
 
 int main() {
