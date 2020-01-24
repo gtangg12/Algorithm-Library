@@ -1,38 +1,8 @@
-/*
-   ID: gtangg11
-   LANG: C++11
-   TASK: fence
- */
-
 /**
     Euler Tour on connected graph
  */
-#include <bits/stdc++.h>
-#include <unordered_set>
-#include <unordered_map>
+#include "header.h"
 
-using namespace std;
-
-typedef long long ll;
-typedef pair<int, int> pi;
-typedef pair<double, double> pd;
-typedef vector<bool> vb;
-typedef vector<int> vi;
-typedef vector<double> vd;
-typedef vector<pi> vpi;
-typedef vector<pd> vpd;
-
-#define mp make_pair
-#define pb push_back
-#define f first
-#define s second
-#define lb lower_bound
-#define ub upper_bound
-#define be(x) x.begin()
-#define en(x) x.end()
-#define sz(x) (int)x.size()
-
-#define INF INT_MAX
 #define MAXN 262144
 
 int N, M;
