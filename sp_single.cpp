@@ -15,39 +15,43 @@ vpi adj[MAXN];
 int dis[MAXN], par[MAXN];
 
 void dijkstra(int v) {
-	fill(dis, dis+MAXN, INF);
-	fill(par, par+MAXN, -1);
-	vb vis(N+1, false);
+	fill(dis, dis + MAXN, INF);
+	fill(par, par + MAXN, -1);
 	priority_queue<pi, vpi, greater<pi> > pq;
 	dis[v] = 0;
 	pq.push({0, v});
-	int cur, nxt, new_dis;
+	int cur, cur_dis, nxt;
 	while(sz(pq) > 0) {
+		cur_dis = pq.top().f;
 		cur = pq.top().s;
 		pq.pop();
-		vis[cur] = true;
+		if (cur_dis > dis[cur])
+			continue;
 		for (pi e: adj[cur]) {
 			nxt = e.f;
-			new_dis = dis[cur]+e.s;
-			if (!vis[nxt] && new_dis < dis[nxt]) {
-				dis[nxt] = new_dis;
-				pq.emplace(new_dis, nxt);
+			if (dis[cur] + e.s < dis[nxt]) {
+				dis[nxt] = dis[cur] + e.s;
 				par[nxt] = cur;
+				pq.emplace(dis[nxt], nxt);
 			}
 		}
 	}
 }
 
+void dijkstra_dense(int v) {
+
+}
+
 void bellman_ford(int v) {
-	fill(dis, dis+MAXN, INF);
-	fill(par, par+MAXN, -1);
+	fill(dis, dis + MAXN, INF);
+	fill(par, par + MAXN, -1);
 	dis[v] = 0;
-	for (int i = 0; i < N-1; i++)
+	for (int i = 0; i < N - 1; i++)
 		for (int j = 1; j <= N; j++) {
 			if (dis[j] == INF) continue;
 			for (pi e: adj[j])
-				if (dis[j]+e.s < dis[e.f]) {
-					dis[e.f] = dis[j]+e.s;
+				if (dis[j] + e.s < dis[e.f]) {
+					dis[e.f] = dis[j] + e.s;
 					par[e.f] = j;
 				}
 		}
@@ -57,12 +61,16 @@ void bellman_ford(int v) {
 		for (int j = 1; j <= N; j++) {
 			if (dis[j] == INF) continue;
 			for (pi e: adj[j])
-				if (dis[e.f] != -INF && dis[j]+e.s < dis[e.f]) {
+				if (dis[e.f] != -INF && dis[j] + e.s < dis[e.f]) {
 					dis[e.f] = -INF;
 					cycle = true;
 				}
 		}
 	}
+}
+
+void spfa(int v) {
+
 }
 
 int main() {
