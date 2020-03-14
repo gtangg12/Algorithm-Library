@@ -1,17 +1,11 @@
-/**
-   Dijkstra's with path reconstruction
+// Sparse and Dense Dijkstra's, Bellman Ford, Shortest Path Faster Algorithm
 
-   Bellman-Ford with path reconstruction. Distances to nodes in negative cycles
-   are set to -INF.
- */
 #include "header.h"
 
 #define MAXN 262144
 
 int N, M;
 vpi adj[MAXN];
-
-// sp single
 int dis[MAXN], par[MAXN];
 
 void dijkstra(int v) {
@@ -55,7 +49,7 @@ void bellman_ford(int v) {
 					par[e.f] = j;
 				}
 		}
-	bool cycle = true; // negative cycles
+	bool cycle = true;
 	while(cycle) {
 		cycle = false;
 		for (int j = 1; j <= N; j++) {

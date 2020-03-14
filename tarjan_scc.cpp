@@ -1,6 +1,5 @@
-/**
-   Strongly Connected Components and Condensation DAG
- */
+// Strongly Connected Components and Condensation DAG
+
 #include "header.h"
 
 #define MAXN 262144
@@ -8,7 +7,6 @@
 int N, M;
 vi adj[MAXN];
 
-// scc
 int ent[MAXN], low[MAXN], t = 0;
 bool on_stk[MAXN];
 stack<int> stk;
@@ -41,18 +39,17 @@ void dfs(int n) {
 }
 
 void tarjan_scc() {
-	fill(ent, ent+MAXN, -1);
-	fill(low, low+MAXN, -1);
+	fill(ent, ent + MAXN, -1);
+	fill(low, low + MAXN, -1);
 	for (int i = 1; i <= N; i++)
 		if (ent[i] == -1) dfs(i);
 }
 
-// condensation dag
 vi dag[MAXN];
 int scc_sz[MAXN];
 
 void dag_scc() {
-	fill(scc_sz, scc_sz+scc_num, 0);
+	fill(scc_sz, scc_sz + scc_num, 0);
 	for (int i = 1; i <= N; i++)
 		scc_sz[scc[i]]++;
 	for (int i = 1; i <= N; i++)

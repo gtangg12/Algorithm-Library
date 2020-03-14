@@ -25,12 +25,10 @@ typedef vector<pd> vpd;
 
 #define INF INT_MAX
 
-/**
-   Link file I/O to cin/cout
- */
+// Link file I/O to cin/cout
 void setIO(string name) {
-    ios_base::sync_with_stdio(0);
-    cin.tie(0);
-    freopen((name+".in").c_str(), "r", stdin);
-    freopen((name+".out").c_str(), "w", stdout);
+	ios_base::sync_with_stdio(0);
+	cin.tie(0);
+	freopen((name + ".in").c_str(), "r", stdin);
+	freopen((name + ".out").c_str(), "w", stdout);
 }

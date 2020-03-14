@@ -1,13 +1,11 @@
-/**
-   Implicit Treap implemented as min heap via split, merge, w/ search, insertion,
-   deletion all at index, subtree size, range sum, and range add
- */
+// Implicit Treap
+
 #include "header.h"
 
 #define cnt(x) (x ? x->sz : 0)
 
 struct node {
-	int y = rand()^(rand()<<16), sz = 1;
+	int y = rand() ^ (rand() << 16), sz = 1;
 	int x, sum, lazy = 0;
 	node *l = NULL, *r = NULL;
 
@@ -19,7 +17,7 @@ struct node {
 			l->push(), sum += l->sum;
 		if (r)
 			r->push(), sum += r->sum;
-		sz = cnt(l)+cnt(r)+1;
+		sz = cnt(l) + cnt(r) + 1;
 	}
 
 	void push() {
@@ -41,7 +39,7 @@ void split_at(node *t, node *&l, node *&r, int i) {
 	if (i <= cnt(t->l))
 		r = t, split_at(t->l, l, t->l, i);
 	else
-		l = t, split_at(t->r, t->r, r, i-cnt(t->l)-1);
+		l = t, split_at(t->r, t->r, r, i - cnt(t->l) - 1);
 	t->pull();
 }
 
@@ -67,7 +65,7 @@ node *find_at(node *t, int i) {
 	else if (i < cnt(t->l))
 		ret = find_at(t->l, i);
 	else
-		ret = find_at(t->r, i-cnt(t->l)-1);
+		ret = find_at(t->r, i - cnt(t->l) - 1);
 	t->pull();
 	return ret;
 }
@@ -90,7 +88,7 @@ void remove_at(node *&t, int i) {
 int range_sum(node *t, int li, int ri) {
 	node *l = NULL, *r = NULL, *s = NULL;
 	split_at(t, l, r, li);
-	split_at(r, r, s, ri-li+1);
+	split_at(r, r, s, ri - li + 1);
 	int ret = r->sum;
 	merge(t, l, r);
 	merge(t, t, s);
@@ -100,7 +98,7 @@ int range_sum(node *t, int li, int ri) {
 void range_add(node *t, int li, int ri, int v) {
 	node *l = NULL, *r = NULL, *s = NULL;
 	split_at(t, l, r, li);
-	split_at(r, r, s, ri-li+1);
+	split_at(r, r, s, ri - li + 1);
 	r->lazy += v;
 	merge(t, l, r);
 	merge(t, t, s);

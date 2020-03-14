@@ -1,6 +1,5 @@
-/**
-    Splay Tree via split, merge, w/ search, insertion, deletion, and subtree size
- */
+// Splay Tree
+
 #include "header.h"
 
 #define cnt(x) (x ? x->sz : 0)
@@ -12,7 +11,7 @@ struct node {
 	node(ll x) : x(x) {}
 
 	void pull() {
-		sz = cnt(c[0])+cnt(c[1])+1;
+		sz = cnt(c[0]) + cnt(c[1]) + 1;
 	}
 };
 
@@ -23,7 +22,8 @@ void link(node *x, node *y, int d) {
 		y->p = x;
 }
 
-void rotate(node *t, int d) {  // d = 0 for left child, 1 right
+void rotate(node *t, int d) {
+	// d = 0 for left child, 1 right
 	node *p = t->p, *c = t->c[d];
 	link(t, c->c[!d], d);
 	link(c, t, !d);

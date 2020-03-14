@@ -1,19 +1,17 @@
-/**
-   Treap implemented as min heap via split, merge, w/ search, insertion, deletion,
-   and subtree size
- */
+// Treap
+
 #include "header.h"
 
 #define cnt(x) (x ? x->sz : 0)
 
 struct node {
-	int x, y = rand()^(rand()<<16), sz = 1;
+	int x, y = rand() ^ (rand() << 16), sz = 1;
 	node *l = NULL, *r = NULL;
 
 	node(int x) : x(x) {}
 
 	void pull() {
-		sz = cnt(l)+cnt(r)+1;
+		sz = cnt(l) + cnt(r) + 1;
 	}
 };
 
@@ -60,7 +58,7 @@ void insert(node *&t, int x) {
 void remove(node *&t, int x) {
 	node *l = NULL, *r = NULL;
 	split(t, l, t, x);
-	split(t, t, r, x+1);
+	split(t, t, r, x + 1);
 	merge(t, l, r);
 }
 

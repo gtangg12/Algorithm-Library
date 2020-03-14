@@ -1,6 +1,5 @@
-/**
-   Articulation Points, Bridges, and Biconnected Components
- */
+// Articulation Points, Bridges, and Biconnected Components
+
 #include "header.h"
 
 #define MAXN 262144
@@ -8,13 +7,13 @@
 int N, M;
 vi adj[MAXN];
 
-// bcc
 int ent[MAXN], low[MAXN], t = 0;
 stack<pi> stk;
 
 int bcc_num = 0;
-vi art; vpi bri;
 vi bcc[MAXN];
+vi art;
+vpi bri;
 
 void dfs(int n, int p = -1) {
 	ent[n] = low[n] = t++;
@@ -54,8 +53,8 @@ void dfs(int n, int p = -1) {
 }
 
 void tarjan_bcc() {
-	fill(ent, ent+MAXN, -1);
-	fill(low, low+MAXN, -1);
+	fill(ent, ent + MAXN, -1);
+	fill(low, low + MAXN, -1);
 	for (int i = 1; i <= N; i++)
 		if (ent[i] == -1) dfs(i);
 }

@@ -1,11 +1,9 @@
-/**
-   Centroid Decomposition
- */
+// Centroid Decomposition
+
 #include "header.h"
 
 #define MAXN 262144
 
-// tree
 int N;
 vi adj[MAXN];
 int sz[MAXN];
@@ -19,12 +17,11 @@ int dfs(int n, int p = -1) {
 	return sz[n];
 }
 
-// centroid decomposition
 int cpar[MAXN];
 
 int centroid(int n, int s, int p = -1) {
 	for (int c: adj[n])
-		if (c != p && !vis[c] && sz[c] > s/2)
+		if (c != p && !vis[c] && sz[c] > s / 2)
 			return centroid(c, s, n);
 	return n;
 }
@@ -39,8 +36,8 @@ void decomp(int n, int p = -1) {
 }
 
 void cent_build() {
-	fill(vis, vis+MAXN, false);
-	fill(cpar, cpar+MAXN, -1);
+	fill(vis, vis + MAXN, false);
+	fill(cpar, cpar + MAXN, -1);
 	decomp(1);
 }
 

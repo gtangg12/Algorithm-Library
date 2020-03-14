@@ -1,6 +1,5 @@
-/**
-   Disjoint Set Union via union by rank and path compression
- */
+// Disjoint Set Union
+
 #include "header.h"
 
 #define MAXN 262144
@@ -29,6 +28,6 @@ void unite(int u, int v) {
 }
 
 int main() {
-	fill(par, par+MAXN, -1);
-	fill(sz, sz+MAXN, 1);
+	fill(par, par + MAXN, -1);
+	fill(sz, sz + MAXN, 1);
 }

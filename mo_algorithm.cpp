@@ -1,6 +1,5 @@
-/**
-    Mo's Algorithm for range mode
- */
+// Mo's Algorithm for range mode
+
 #include "header.h"
 
 #define MAXN 262144
@@ -9,12 +8,11 @@ int A[MAXN], ans[MAXN];
 int BLOCK, cans = 0, li = 0, ri = -1;
 
 bool cmp(array<int, 3> a, array<int, 3> b) {
-	if (a[0]/BLOCK != b[0]/BLOCK)
+	if (a[0] / BLOCK != b[0] / BLOCK)
 		return a[0] < b[0];
 	return a[1] < b[1];
 }
 
-// maintenance ds
 int occ[MAXN], cnt[MAXN];
 
 void update(int i, int v) {
@@ -22,7 +20,7 @@ void update(int i, int v) {
 	cnt[occ[x]]--;
 	occ[x] += v;
 	cnt[occ[x]]++;
-	while (cnt[cans+1] > 0)
+	while (cnt[cans + 1] > 0)
 		cans++;
 	while (cans > 0 && cnt[cans] == 0)
 		cans--;
@@ -41,8 +39,8 @@ int range_mode(int l, int r) {
 }
 
 void mo(int n, vector<array<int, 3> > &vq) {
-	fill(occ, occ+MAXN, 0);
-	fill(cnt, cnt+MAXN, 0);
+	fill(occ, occ + MAXN, 0);
+	fill(cnt, cnt + MAXN, 0);
 	BLOCK = sqrt(n);
 	sort(be(vq), en(vq), cmp);
 	for (array<int, 3> q: vq)
@@ -51,6 +49,6 @@ void mo(int n, vector<array<int, 3> > &vq) {
 
 int main() {
 	int N;
-	vector<array<int, 3>> vq;    // idx, l, r
+	vector<array<int, 3> > vq; // idx, l, r
 	mo(N, vq);
 }

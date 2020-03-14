@@ -1,11 +1,9 @@
-/**
-   Persistent Segment Tree w/ range sum and point update
- */
+// Persistent Segment Tree
+
 #include "header.h"
 
 #define MAXN 262144
 
-// persistent segtree
 struct node {
 	int sum;
 	node *l, *r;
@@ -21,16 +19,16 @@ struct node {
 	}
 };
 
-int range_sum(node *t, int l, int r, int li = 0, int ri = MAXN-1) {
+int range_sum(node *t, int l, int r, int li = 0, int ri = MAXN - 1) {
 	if (ri < l || li > r)
 		return 0;
 	if (l <= li && ri <= r)
 		return t->sum;
-	int m = (li+ri)/2;
-	return range_sum(t->l, l, r, li, m)+range_sum(t->r, l, r, m+1, ri);
+	int m = (li + ri) / 2;
+	return range_sum(t->l, l, r, li, m) + range_sum(t->r, l, r, m + 1, ri);
 }
 
-node *point_upd(node *t, int idx, int v, int li = 0, int ri = MAXN-1) {
+node *point_upd(node *t, int idx, int v, int li = 0, int ri = MAXN - 1) {
 	if (ri < idx || li > idx)
 		return t;
 	node *n = new node(0, NULL, NULL);
@@ -38,9 +36,9 @@ node *point_upd(node *t, int idx, int v, int li = 0, int ri = MAXN-1) {
 		n->sum = t->sum + v;
 		return n;
 	}
-	int m = (li+ri)/2;
+	int m = (li + ri) / 2;
 	n->l = point_upd(t->l, idx, v, li, m);
-	n->r = point_upd(t->r, idx, v, m+1, ri);
+	n->r = point_upd(t->r, idx, v, m + 1, ri);
 	n->pull();
 	return n;
 }
@@ -48,8 +46,8 @@ node *point_upd(node *t, int idx, int v, int li = 0, int ri = MAXN-1) {
 node *st_build(vi &v, int li, int ri) {
 	if (li == ri)
 		return new node(v[li], NULL, NULL);
-	int m = (li+ri)/2;
-	node *n = new node(0, st_build(v, li, m), st_build(v, m+1, ri));
+	int m = (li + ri) / 2;
+	node *n = new node(0, st_build(v, li, m), st_build(v, m + 1, ri));
 	n->pull();
 	return n;
 }
@@ -71,5 +69,5 @@ void point_upd(int idx, int v, int t) {
 
 int main() {
 	vi init(MAXN, 0);
-	t_map[0] = st_build(init, 0, MAXN-1);
+	t_map[0] = st_build(init, 0, MAXN - 1);
 }
