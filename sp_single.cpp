@@ -1,4 +1,4 @@
-// Sparse and Dense Dijkstra's, Bellman Ford, Shortest Path Faster Algorithm
+// Dijkstra's, Bellman Ford, Shortest Path Faster Algorithm
 
 #include "header.h"
 
@@ -9,20 +9,17 @@ vpi adj[MAXN];
 int dis[MAXN], par[MAXN];
 
 void dijkstra(int v) {
-	fill(dis, dis + MAXN, INF);
-	fill(par, par + MAXN, -1);
 	priority_queue<pi, vpi, greater<pi> > pq;
 	dis[v] = 0;
 	pq.push({0, v});
-	int cur, cur_dis, nxt;
 	while(sz(pq) > 0) {
-		cur_dis = pq.top().f;
-		cur = pq.top().s;
+		int cur_dis = pq.top().f;
+		int cur = pq.top().s;
 		pq.pop();
 		if (cur_dis > dis[cur])
 			continue;
-		for (pi e: adj[cur]) {
-			nxt = e.f;
+		for (auto e: adj[cur]) {
+			int nxt = e.f;
 			if (dis[cur] + e.s < dis[nxt]) {
 				dis[nxt] = dis[cur] + e.s;
 				par[nxt] = cur;
@@ -32,13 +29,7 @@ void dijkstra(int v) {
 	}
 }
 
-void dijkstra_dense(int v) {
-
-}
-
 void bellman_ford(int v) {
-	fill(dis, dis + MAXN, INF);
-	fill(par, par + MAXN, -1);
 	dis[v] = 0;
 	for (int i = 0; i < N - 1; i++)
 		for (int j = 1; j <= N; j++) {
@@ -63,10 +54,41 @@ void bellman_ford(int v) {
 	}
 }
 
-void spfa(int v) {
+int cnt[MAXN];
+bool inqueue[MAXN];
 
+bool spfa(int v) {
+	// O(m) average, O(nm) worst case
+	// Can only detect existence of negative cycle
+	fill(cnt, cnt + MAXN, 0);
+	fill(inqueue, inqueue + MAXN, false);
+	queue<int> q;
+	dis[v] = 0;
+	q.push(v);
+	inqueue[v] = true;
+	while(sz(q) > 0) {
+		int cur = q.front();
+		q.pop();
+		inqueue[cur] = false;
+		for (auto e: adj[cur]) {
+			int nxt = e.f;
+			if (dis[cur] + e.s < dis[nxt]) {
+				dis[nxt] = dis[cur] + e.s;
+				par[nxt] = cur;
+				if (!inqueue[nxt]) {
+					q.push(nxt);
+					inqueue[nxt] = true;
+					cnt[nxt]++;
+					if (cnt[nxt] > N)
+						return false;
+				}
+			}
+		}
+	}
+	return true;
 }
 
 int main() {
-
+	fill(dis, dis + MAXN, INF);
+	fill(par, par + MAXN, -1);
 }
