@@ -18,15 +18,15 @@ void z_function(string &s) {
 	}
 }
 
-vi occ;
-
-void z_algorithm(string &s, string &t) {
+vi z_algorithm(string &s, string &t) {
+	vi occ;
 	string r = s + '$' + t;
 	z_function(r);
 	int p = sz(s);
 	for (int i = 0; i < sz(t); i++)
 		if (Z[i + p + 1] == p)
 			occ.pb(i);
+	return occ;
 }
 
 int main() {

@@ -19,15 +19,15 @@ void p_function(string &s) {
 	}
 }
 
-vi occ;
-
-void kmp(string &s, string &t) {
+vi kmp(string &s, string &t) {
+	vi occ;
 	string r = s + '$' + t;
 	p_function(r);
 	int p = sz(s);
 	for (int i = p + 1; i < sz(r); i++)
 		if (P[i] == p)
 			occ.pb(i - 2 * p);
+	return occ;
 }
 
 int main() {

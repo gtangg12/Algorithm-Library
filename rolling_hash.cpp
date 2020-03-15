@@ -48,9 +48,8 @@ bool compare(substr_hash &s1, substr_hash &s2, int a, int b, int c, int d) {
 	return v1 == v2;
 }
 
-vi occ;
-
-void robin_karp(string &s, string &t) {
+vi robin_karp(string &s, string &t) {
+	vi occ;
 	int S = sz(s), T = sz(t);
 	substr_hash sh(s);
 	ll h = get_hash(t), ch;
@@ -59,6 +58,7 @@ void robin_karp(string &s, string &t) {
 		if (ch == h * sh.P[i] % MOD)
 			occ.pb(i);
 	}
+	return occ;
 }
 
 int main() {

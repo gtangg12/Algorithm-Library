@@ -9,9 +9,9 @@ double cross(pd a, pd b, pd c) {
 	return (b.f - a.f) * (c.s - a.s) - (b.s - a.s) * (c.f - a.f);
 }
 
-void graham_scan(vpd &vp, vpd &vh) {
+vpd graham_scan(vpd &vp) {
 	sort(be(vp), en(vp));
-	vh = vpd(sz(vp) + 1);
+	vpd vh = vpd(sz(vp) + 1);
 	int idx = 0, mid;
 	for (int i = 0; i < sz(vp); i++) {
 		while (idx >= 2 && cross(vh[idx - 2], vh[idx - 1], vp[i]) >= 0)
@@ -25,8 +25,9 @@ void graham_scan(vpd &vp, vpd &vh) {
 		vh[idx++] = vp[i];
 	}
 	vh.resize(idx - 1);
+	return vh;
 }
 
 int main() {
-	vpd vp, vh;
+
 }
