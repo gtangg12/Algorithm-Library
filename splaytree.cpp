@@ -5,10 +5,10 @@
 #define cnt(x) (x ? x->sz : 0)
 
 struct node {
-	ll x, sz = 1;
+	int x, sz = 1;
 	node *c[2] = {NULL}, *p = NULL;
 
-	node(ll x) : x(x) {}
+	node(int x) : x(x) {}
 
 	void pull() {
 		sz = cnt(c[0]) + cnt(c[1]) + 1;
@@ -47,7 +47,7 @@ void splay(node *t) {
 	}
 }
 
-void split(node *t, node *&l, node *&r, ll x) {
+void split(node *t, node *&l, node *&r, int x) {
 	node *n = NULL, *s = t;
 	while (s != NULL) {
 		if (s->x >= x)
@@ -77,7 +77,7 @@ void merge(node *&t, node *l, node *r) {
 	t = s;
 }
 
-node* find(node *&t, ll x) {
+node* find(node *&t, int x) {
 	if (!t)
 		return NULL;
 	if (t->x == x)
@@ -85,7 +85,7 @@ node* find(node *&t, ll x) {
 	return (t->x > x) ? find(t->c[0], x) : find(t->c[1], x);
 }
 
-void insert(node *&t, ll x) {
+void insert(node *&t, int x) {
 	node *l = NULL, *r = NULL;
 	split(t, l, r, x);
 	node *n = new node(x);
@@ -95,7 +95,7 @@ void insert(node *&t, ll x) {
 	t = n;
 }
 
-void remove(node *&t, ll x) {
+void remove(node *&t, int x) {
 	node *n = find(t, x);
 	if (n == NULL)
 		return;

@@ -23,7 +23,7 @@ typedef vector<pd> vpd;
 #define en(x) x.end()
 #define sz(x) (int)x.size()
 
-#define INF INT_MAX
+const int INF = INT_MAX;
 
 // Link file I/O to cin/cout
 void setIO(string name) {

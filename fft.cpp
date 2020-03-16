@@ -6,7 +6,7 @@ typedef complex<double> cd;
 
 #define MAXN 262144
 
-void fft(vector<cd> &a, int inv) {
+void fft(vector<cd> &a, bool inv) {
 	int n = sz(a);
 	int invert = inv ? -1 : 1;
 	int j = 0;
