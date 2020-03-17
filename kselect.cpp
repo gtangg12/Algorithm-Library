@@ -1,4 +1,4 @@
-// Min/max kth element
+// Min/max kth element in expected O(n)
 
 #include "header.h"
 
