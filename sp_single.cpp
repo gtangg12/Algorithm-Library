@@ -12,7 +12,7 @@ void dijkstra(int v) {
 	priority_queue<pi, vpi, greater<pi> > pq;
 	dis[v] = 0;
 	pq.push({0, v});
-	while(sz(pq) > 0) {
+	while (sz(pq) > 0) {
 		int cur_dis = pq.top().f;
 		int cur = pq.top().s;
 		pq.pop();
@@ -41,7 +41,7 @@ void bellman_ford(int v) {
 				}
 		}
 	bool cycle = true;
-	while(cycle) {
+	while (cycle) {
 		cycle = false;
 		for (int j = 1; j <= N; j++) {
 			if (dis[j] == INF) continue;
@@ -66,7 +66,7 @@ bool spfa(int v) {
 	dis[v] = 0;
 	q.push(v);
 	inqueue[v] = true;
-	while(sz(q) > 0) {
+	while (sz(q) > 0) {
 		int cur = q.front();
 		q.pop();
 		inqueue[cur] = false;

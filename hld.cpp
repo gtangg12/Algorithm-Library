@@ -47,7 +47,7 @@ void range_add(int l, int r, int v, int li = 0, int ri = MAXN - 1, int i = 1) {
 }
 
 void st_build(vi &v, int li, int ri, int i = 1) {
-	if(li == ri)
+	if (li == ri)
 		st_sum[i] = v[li];
 	else {
 		int m = (li + ri) / 2;
