@@ -2,11 +2,14 @@
 
 #include "header.h"
 
-#define cnt(x) (x ? x->sz : 0)
+#define cnt(x) (x ? x->size : 0)
 
 struct node {
-	int y = rand() ^ (rand() << 16), sz = 1;
-	int x, sum, lazy = 0;
+	int y = rand() ^ (rand() << 16);
+	int size = 1;
+	int x;
+	int sum;
+	int lazy = 0;
 	node *l = NULL, *r = NULL;
 
 	node(int x) : x(x), sum(x) {}
@@ -17,7 +20,7 @@ struct node {
 			l->push(), sum += l->sum;
 		if (r)
 			r->push(), sum += r->sum;
-		sz = cnt(l) + cnt(r) + 1;
+		size = cnt(l) + cnt(r) + 1;
 	}
 
 	void push() {

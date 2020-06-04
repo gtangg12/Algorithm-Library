@@ -2,8 +2,8 @@
 
 #include "header.h"
 
-#define BASE 31
-#define MOD 1000000009
+const int BASE = 31;
+const int MOD = 1000000009;
 
 ll get_hash(string &s) {
 	ll v = 0, p = 1;
@@ -35,7 +35,7 @@ struct substr_hash {
 };
 
 bool compare(substr_hash &s1, substr_hash &s2, int a, int b, int c, int d) {
-	// Returns true if s1[a, b] equals s2[c, d]
+	// Returns if s1[a, b] equals s2[c, d]
 	vector<ll> &P = s1.n > s2.n ? s1.P : s2.P;
 	ll v1 = s1.get_hash(a, b);
 	ll v2 = s2.get_hash(c, d);

@@ -2,16 +2,17 @@
 
 #include "header.h"
 
-#define cnt(x) (x ? x->sz : 0)
+#define cnt(x) (x ? x->size : 0)
 
 struct node {
-	int x, sz = 1;
+	int x;
+	int size = 1;
 	node *c[2] = {NULL}, *p = NULL;
 
 	node(int x) : x(x) {}
 
 	void pull() {
-		sz = cnt(c[0]) + cnt(c[1]) + 1;
+		size = cnt(c[0]) + cnt(c[1]) + 1;
 	}
 };
 

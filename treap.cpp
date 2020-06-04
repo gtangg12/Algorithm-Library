@@ -2,16 +2,18 @@
 
 #include "header.h"
 
-#define cnt(x) (x ? x->sz : 0)
+#define cnt(x) (x ? x->size : 0)
 
 struct node {
-	int x, y = rand() ^ (rand() << 16), sz = 1;
+	int y = rand() ^ (rand() << 16);
+	int size = 1;
+	int x;
 	node *l = NULL, *r = NULL;
 
 	node(int x) : x(x) {}
 
 	void pull() {
-		sz = cnt(l) + cnt(r) + 1;
+		size = cnt(l) + cnt(r) + 1;
 	}
 };
 

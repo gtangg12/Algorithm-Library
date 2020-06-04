@@ -2,7 +2,7 @@
 
 #include "header.h"
 
-#define MAXN 262144
+const int MAXN = 262144;
 
 int A[MAXN], ans[MAXN];
 int BLOCK, cans = 0, li = 0, ri = -1;
@@ -39,10 +39,10 @@ int range_mode(int l, int r) {
 }
 
 void mo(int n, vector<array<int, 3> > &vq) {
-	fill(occ, occ + MAXN, 0);
-	fill(cnt, cnt + MAXN, 0);
+	memset(occ, 0, sizeof occ);
+	memset(cnt, 0, sizeof cnt);
 	BLOCK = sqrt(n);
-	sort(be(vq), en(vq), cmp);
+	sort(all(vq), cmp);
 	for (array<int, 3> q: vq)
 		ans[q[0]] = range_mode(q[1], q[2]);
 }

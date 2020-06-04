@@ -19,9 +19,10 @@ typedef vector<pd> vpd;
 #define s second
 #define lb lower_bound
 #define ub upper_bound
+#define sz(x) (int)x.size()
 #define be(x) x.begin()
 #define en(x) x.end()
-#define sz(x) (int)x.size()
+#define all(x) x.begin(), x.end()
 
 const int INF = INT_MAX;
 

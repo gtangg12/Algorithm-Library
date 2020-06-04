@@ -12,7 +12,7 @@ mat zeros(int n, int m) {
 
 mat id(int n) {
 	mat ret = zeros(n, n);
-	for (int i = 0; i < n; i++)
+	for (int i = 0; i < n; i++) 
 		ret[i][i] = 1;
 	return ret;
 }
@@ -53,9 +53,10 @@ int rref(mat &a, vd &sol) {
 	vi pivot(m, -1);
 	for (int r = 0, c = 0; r < n && c < m; c++) {
 		int sel = r;
-		for (int i = r; i < n; i++)
+		for (int i = r; i < n; i++) {
 			if (abs(a[i][c]) > abs(a[sel][c]))
 				sel = i;
+		}
 		if (abs(a[sel][c]) < ERROR)
 			continue;
 		for (int i = c; i <= m; i++)

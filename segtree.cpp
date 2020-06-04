@@ -2,7 +2,7 @@
 
 #include "header.h"
 
-#define MAXN 262144
+const int MAXN = 262144;
 
 int st_sum[4 * MAXN];
 
@@ -32,5 +32,5 @@ void point_upd(int idx, int v, int li = 0, int ri = MAXN - 1, int i = 1) {
 }
 
 int main() {
-	fill(st_sum, st_sum + 4 * MAXN, 0);
+	memset(st_sum, 0, sizeof st_sum);
 }

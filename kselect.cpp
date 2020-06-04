@@ -2,7 +2,7 @@
 
 #include "header.h"
 
-#define MAXN 1048576
+const int MAXN = 1048576;
 
 int A[MAXN];
 

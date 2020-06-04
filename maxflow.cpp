@@ -2,12 +2,12 @@
 
 #include "header.h"
 
-#define MAXN 1024
+const int MAXN = 1024;
 
 int N, M;
 vpi adj[MAXN]; // (des, cap)
-int res[MAXN][MAXN];
 int par[MAXN];
+int res[MAXN][MAXN];
 
 int bfs(int s, int t) {
 	fill(par, par + MAXN, -1);

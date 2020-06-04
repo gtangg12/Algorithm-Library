@@ -2,21 +2,21 @@
 
 #include "header.h"
 
-#define MAXN 262144
-#define LOGN 18
+const int MAXN = 262144;
+const int LOGN = 18;
 
 int N;
 vi adj[MAXN];
-int par[MAXN], dep[MAXN];
+int par[MAXN];
+int dep[MAXN];
+int stb[MAXN][LOGN];
 
 void dfs(int n, int p = -1) {
 	par[n] = p;
 	dep[n] = dep[p] + 1;
-	for (int c: adj[n])
-		if (c != p) dfs(c, n);
+	for (int c: adj[n]) if (c != p)
+		dfs(c, n);
 }
-
-int stb[MAXN][LOGN];
 
 int lca(int u, int v) {
 	if (dep[u] < dep[v])
@@ -37,8 +37,8 @@ int lca(int u, int v) {
 	return par[u];
 }
 
-void lca_build() {
-	fill(stb[0], stb[0] + MAXN * LOGN, -1);
+void build() {
+	memset(stb, -1, sizeof stb);
 	dep[1] = 0;
 	dfs(1);
 	for (int i = 1; i < MAXN; i++)
@@ -50,5 +50,5 @@ void lca_build() {
 }
 
 int main() {
-	lca_build();
+	build();
 }

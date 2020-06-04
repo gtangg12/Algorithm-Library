@@ -2,9 +2,10 @@
 
 #include "header.h"
 
-#define MAXN 262144
+const int MAXN = 262144;
 
-int par[MAXN], sz[MAXN];
+int par[MAXN];
+int size[MAXN];
 
 int find(int v) {
 	if (par[v] == -1)
@@ -17,17 +18,17 @@ void unite(int u, int v) {
 	int vr = find(v);
 	if (ur == vr)
 		return;
-	if (sz[ur] < sz[vr]) {
+	if (size[ur] < size[vr]) {
 		par[ur] = vr;
-		sz[vr] += sz[ur];
+		size[vr] += size[ur];
 	}
 	else {
 		par[vr] = ur;
-		sz[ur] += sz[vr];
+		size[ur] += size[vr];
 	}
 }
 
 int main() {
 	fill(par, par + MAXN, -1);
-	fill(sz, sz + MAXN, 1);
+	fill(size, size + MAXN, 1);
 }

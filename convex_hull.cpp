@@ -9,23 +9,25 @@ double cross(pd a, pd b, pd c) {
 	return (b.f - a.f) * (c.s - a.s) - (b.s - a.s) * (c.f - a.f);
 }
 
-vpd graham_scan(vpd &vp) {
-	sort(be(vp), en(vp));
-	vpd vh = vpd(sz(vp) + 1);
-	int idx = 0, mid;
-	for (int i = 0; i < sz(vp); i++) {
-		while (idx >= 2 && cross(vh[idx - 2], vh[idx - 1], vp[i]) >= 0)
+vpd graham_scan(vpd &pnts) {
+	sort(all(pnts));
+	int n = sz(pnts);
+	vpd hull = vpd(n + 1);
+	int idx = 0;
+	int mid;
+	for (int i = 0; i < n; i++) {
+		while (idx >= 2 && cross(hull[idx - 2], hull[idx - 1], pnts[i]) >= 0)
 			idx--;
-		vh[idx++] = vp[i];
+		hull[idx++] = pnts[i];
 	}
 	mid = idx;
-	for (int i = sz(vp) - 2; i >= 0; i--) {
-		while (idx > mid && cross(vh[idx - 2], vh[idx - 1], vp[i]) >= 0)
+	for (int i = n - 2; i >= 0; i--) {
+		while (idx > mid && cross(hull[idx - 2], hull[idx - 1], pnts[i]) >= 0)
 			idx--;
-		vh[idx++] = vp[i];
+		hull[idx++] = pnts[i];
 	}
-	vh.resize(idx - 1);
-	return vh;
+	hull.resize(idx - 1);
+	return hull;
 }
 
 int main() {

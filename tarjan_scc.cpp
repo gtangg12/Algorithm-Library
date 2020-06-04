@@ -2,12 +2,14 @@
 
 #include "header.h"
 
-#define MAXN 262144
+const int MAXN = 262144;
 
 int N, M;
 vi adj[MAXN];
 
-int ent[MAXN], low[MAXN], t = 0;
+int ent[MAXN];
+int low[MAXN];
+int t = 0;
 bool on_stk[MAXN];
 stack<int> stk;
 
@@ -39,19 +41,20 @@ void dfs(int n) {
 }
 
 void tarjan_scc() {
-	fill(ent, ent + MAXN, -1);
-	fill(low, low + MAXN, -1);
+	memset(ent, -1, sizeof ent);
+	memset(low, -1, sizeof low);
 	for (int i = 1; i <= N; i++)
-		if (ent[i] == -1) dfs(i);
+		if (ent[i] == -1)
+			dfs(i);
 }
 
 vi dag[MAXN];
-int scc_sz[MAXN];
+int scc_size[MAXN];
 
 void dag_scc() {
-	fill(scc_sz, scc_sz + scc_num, 0);
+	fill(scc_size, scc_size + scc_num, 0);
 	for (int i = 1; i <= N; i++)
-		scc_sz[scc[i]]++;
+		scc_size[scc[i]]++;
 	for (int i = 1; i <= N; i++)
 		for (int c: adj[i])
 			if (scc[i] != scc[c])

@@ -2,12 +2,14 @@
 
 #include "header.h"
 
-#define MAXN 262144
+const int MAXN = 262144;
 
 int N, M;
 vi adj[MAXN];
 
-int ent[MAXN], low[MAXN], t = 0;
+int ent[MAXN];
+int low[MAXN];
+int t = 0;
 stack<pi> stk;
 
 int bcc_num = 0;
@@ -53,10 +55,11 @@ void dfs(int n, int p = -1) {
 }
 
 void tarjan_bcc() {
-	fill(ent, ent + MAXN, -1);
-	fill(low, low + MAXN, -1);
+	memset(ent, -1, sizeof ent);
+	memset(low, -1, sizeof low);
 	for (int i = 1; i <= N; i++)
-		if (ent[i] == -1) dfs(i);
+		if (ent[i] == -1)
+			dfs(i);
 }
 
 bool biconnected(int u, int v) {

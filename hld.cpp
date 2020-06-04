@@ -2,9 +2,11 @@
 
 #include "header.h"
 
-#define MAXN 262144
+const int MAXN = 262144;
 
-int st_sum[4 * MAXN], lazy[4 * MAXN];
+// Auxiliary Lazy Segment Tree
+int st_sum[4 * MAXN];
+int lazy[4 * MAXN];
 
 void pull(int i) {
 	st_sum[i] = st_sum[2 * i] + st_sum[2 * i + 1];
@@ -57,18 +59,20 @@ void st_build(vi &v, int li, int ri, int i = 1) {
 	}
 }
 
+// Decomposition
 int N;
 vi val, adj[MAXN];
-int par[MAXN], dep[MAXN], sz[MAXN];
+int par[MAXN], dep[MAXN], size[MAXN];
 
 int dfs(int n, int p = -1) {
 	par[n] = p;
 	dep[n] = dep[p] + 1;
-	sz[n] = 1;
-	for (int c: adj[n])
+	size[n] = 1;
+	for (int c: adj[n]) {
 		if (c != p)
-			sz[n] += dfs(c, n);
-	return sz[n];
+			size[n] += dfs(c, n);
+	}
+	return size[n];
 }
 
 int head[MAXN], pos[MAXN];
@@ -77,17 +81,20 @@ int cur_pos = 0;
 void decomp(int v, int h) {
 	head[v] = h;
 	pos[v] = cur_pos++;
-	int m_sz = 0, heavy = -1;
-	for (int c: adj[v])
-		if (c != par[v] && sz[c] > m_sz) {
-			m_sz = sz[c];
+	int m_size = 0;
+	int heavy = -1;
+	for (int c: adj[v]) {
+		if (c != par[v] && size[c] > m_size) {
+			m_size = size[c];
 			heavy = c;
 		}
+	}
 	if (heavy != -1)
 		decomp(heavy, h);
-	for (int c: adj[v])
+	for (int c: adj[v]) {
 		if (c != par[v] && c != heavy)
 			decomp(c, c);
+	}
 }
 
 int path_sum(int u, int v) {
@@ -114,16 +121,16 @@ void path_add(int u, int v, int c) {
 	range_add(pos[u], pos[v], c);
 }
 
-void hld_build() {
-	fill(st_sum, st_sum + 4 * MAXN, 0);
-	fill(lazy, lazy + 4 * MAXN, 0);
-	fill(head, head + MAXN, -1);
-	fill(pos, pos + MAXN, -1);
+void build() {
+	memset(st_sum, 0, sizeof st_sum);
+	memset(lazy, 0, sizeof lazy);
+	memset(head, -1, sizeof head);
+	memset(pos, -1, sizeof pos);
 	dfs(1);
 	decomp(1, 1);
 	st_build(val, 0, N - 1);
 }
 
 int main() {
-	hld_build();
+	build();
 }

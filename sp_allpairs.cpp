@@ -2,11 +2,12 @@
 
 #include "header.h"
 
-#define MAXN 256
+const int MAXN = 256;
 
 int N, M;
 vpi adj[MAXN];
-int dis[MAXN][MAXN], par[MAXN][MAXN];
+int dis[MAXN][MAXN];
+int par[MAXN][MAXN];
 
 void floyd_warshall() {
 	for (int i = 0; i < MAXN; i++) {

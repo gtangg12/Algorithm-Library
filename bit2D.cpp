@@ -2,24 +2,24 @@
 
 #include "header.h"
 
-#define MAXN 1024
+const int MAXN = 1024;
 
-int bit2D[MAXN][MAXN];
+int bit[MAXN][MAXN];
+
+void point_upd(int r, int c, int v) {
+	for (int i = r; i < MAXN; i = i | (i + 1))
+		for (int j = c; j < MAXN; j = j | (j + 1))
+			bit[i][j] += v;
+}
 
 int range_sum(int r, int c) {
 	int sum = 0;
 	for (int i = r; i >= 0; i = (i & (i + 1)) - 1)
 		for (int j = c; j >= 0; j = (j & (j + 1)) - 1)
-			sum += bit2D[i][j];
+			sum += bit[i][j];
 	return sum;
 }
 
-void point_upd(int r, int c, int v) {
-	for (int i = r; i < MAXN; i = i | (i + 1))
-		for (int j = c; j < MAXN; j = j | (j + 1))
-			bit2D[i][j] += v;
-}
-
 int main() {
-	fill(bit2D[0], bit2D[0] + MAXN * MAXN, 0);
+	memset(bit, 0, sizeof bit);
 }

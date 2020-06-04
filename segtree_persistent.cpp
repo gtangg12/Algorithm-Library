@@ -2,7 +2,7 @@
 
 #include "header.h"
 
-#define MAXN 262144
+const int MAXN = 262144;
 
 struct node {
 	int sum;

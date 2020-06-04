@@ -2,11 +2,12 @@
 
 #include "header.h"
 
-#define MAXN 262144
+const int MAXN = 262144;
 
 int N, M;
 vpi adj[MAXN];
-int dis[MAXN], par[MAXN];
+int dis[MAXN];
+int par[MAXN];
 
 void dijkstra(int v) {
 	priority_queue<pi, vpi, greater<pi> > pq;
