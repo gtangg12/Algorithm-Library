@@ -26,9 +26,10 @@ void dfs(int n) {
 
 void euler_tour() {
 	vi odd;
-	for (int i = 1; i <= N; i++)
+	for (int i = 1; i <= N; i++) {
 		if (sz(adj[i]) % 2 != 0)
 			odd.pb(i);
+	}
 	if (sz(odd) == 2)  // tour w/o cycle
 		dfs(min(odd[0], odd[1]));
 	else if (sz(odd) == 0)  // cycle
