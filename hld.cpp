@@ -68,10 +68,9 @@ int dfs(int n, int p = -1) {
 	par[n] = p;
 	dep[n] = dep[p] + 1;
 	size[n] = 1;
-	for (int c: adj[n]) {
+	for (int c: adj[n])
 		if (c != p)
 			size[n] += dfs(c, n);
-	}
 	return size[n];
 }
 
@@ -83,18 +82,16 @@ void decomp(int v, int h) {
 	pos[v] = cur_pos++;
 	int m_size = 0;
 	int heavy = -1;
-	for (int c: adj[v]) {
+	for (int c: adj[v])
 		if (c != par[v] && size[c] > m_size) {
 			m_size = size[c];
 			heavy = c;
 		}
-	}
 	if (heavy != -1)
 		decomp(heavy, h);
-	for (int c: adj[v]) {
+	for (int c: adj[v])
 		if (c != par[v] && c != heavy)
 			decomp(c, c);
-	}
 }
 
 int path_sum(int u, int v) {

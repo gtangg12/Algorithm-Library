@@ -23,11 +23,11 @@ void unite(int u, int v, int t) {
 	int vr_size = size[vr].back().s;
 	if (ur_size < vr_size) {
 		par[ur] = mp(t, vr);
-		size[vr].pb(mp(t, ur_size + vr_size));
+		size[vr].pb({t, ur_size + vr_size});
 	}
 	else {
 		par[vr] = mp(t, ur);
-		size[ur].pb(mp(t, ur_size + vr_size));
+		size[ur].pb({t, ur_size + vr_size});
 	}
 }
 
@@ -38,5 +38,5 @@ int size_at(int u, int t) {
 
 int main() {
 	fill(par, par + MAXN, mp(-1, -1));
-	fill(size, size + MAXN, vpi(1, mp(-1, 1)));
+	fill(size, size + MAXN, vpi(1, {-1, 1}));
 }

@@ -12,9 +12,8 @@ void fft(vector<cd> &fa, bool inv) {
 	int j = 0;
 	for (int i = 1; i < n; i++) {
 		int bit = n >> 1;
-		for (; j & bit; bit >>= 1) {
+		for (; j & bit; bit >>= 1)
 			j ^= bit;
-		}
 		j ^= bit;
 		if (i < j) swap(fa[i], fa[j]);
 	}
