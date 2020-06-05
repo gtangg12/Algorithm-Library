@@ -61,8 +61,12 @@ void st_build(vi &v, int li, int ri, int i = 1) {
 
 // Decomposition
 int N;
-vi val, adj[MAXN];
-int par[MAXN], dep[MAXN], size[MAXN];
+vi val;
+vi adj[MAXN];
+
+int par[MAXN];
+int dep[MAXN];
+int size[MAXN];
 
 int dfs(int n, int p = -1) {
 	par[n] = p;
@@ -74,7 +78,8 @@ int dfs(int n, int p = -1) {
 	return size[n];
 }
 
-int head[MAXN], pos[MAXN];
+int pos[MAXN];
+int head[MAXN];
 int cur_pos = 0;
 
 void decomp(int v, int h) {
