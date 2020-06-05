@@ -14,13 +14,12 @@ vpd graham_scan(vpd &pnts) {
 	int n = sz(pnts);
 	vpd hull = vpd(n + 1);
 	int idx = 0;
-	int mid;
 	for (int i = 0; i < n; i++) {
 		while (idx >= 2 && cross(hull[idx - 2], hull[idx - 1], pnts[i]) >= 0)
 			idx--;
 		hull[idx++] = pnts[i];
 	}
-	mid = idx;
+	int mid = idx;
 	for (int i = n - 2; i >= 0; i--) {
 		while (idx > mid && cross(hull[idx - 2], hull[idx - 1], pnts[i]) >= 0)
 			idx--;
