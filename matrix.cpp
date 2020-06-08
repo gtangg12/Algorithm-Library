@@ -4,7 +4,7 @@
 
 typedef vector<vd> mat;
 
-const double ERROR = 1e-9;
+const double EPS = 1e-9;
 
 mat zeros(int n, int m) {
 	return mat(n, vd(m));
@@ -56,7 +56,7 @@ int rref(mat &a, vd &sol) {
 		for (int i = r; i < n; i++)
 			if (abs(a[i][c]) > abs(a[sel][c]))
 				sel = i;
-		if (abs(a[sel][c]) < ERROR)
+		if (abs(a[sel][c]) < EPS)
 			continue;
 		for (int i = c; i <= m; i++)
 			swap(a[sel][i], a[r][i]);
@@ -78,7 +78,7 @@ int rref(mat &a, vd &sol) {
 		double sum = 0;
 		for (int j = 0; j < m; j++)
 			sum += sol[j] * a[i][j];
-		if (abs(sum - a[i][m]) > ERROR)
+		if (abs(sum - a[i][m]) > EPS)
 			return 0;
 	}
 	for (int i = 0; i < m; i++)

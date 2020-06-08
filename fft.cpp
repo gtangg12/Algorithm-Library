@@ -18,8 +18,8 @@ void fft(vector<cd> &fa, bool inv) {
 		if (i < j) swap(fa[i], fa[j]);
 	}
 	for (int len = 2; len <= n; len <<= 1) {
-		double a = 2 * M_PI / len * invert;
-		cd wm(cos(a), sin(a));
+		double t = 2 * M_PI / len * invert;
+		cd wm(cos(t), sin(t));
 		for (int i = 0; i < n; i += len) {
 			cd w(1);
 			for (int j = 0; j < len / 2; j++) {
