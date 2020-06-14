@@ -1,4 +1,4 @@
-// Common 2D geometry algorithms
+// 2D geometry algorithms
 
 #include "header.h"
 

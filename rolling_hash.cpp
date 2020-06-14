@@ -3,7 +3,7 @@
 #include "header.h"
 
 const int BASE = 31;
-const int MOD = 1000000009;
+const int MOD = 10e9 + 7;
 
 ll get_hash(string &s) {
 	ll v = 0, p = 1;
@@ -14,11 +14,11 @@ ll get_hash(string &s) {
 	return v;
 }
 
-struct substr_hash {
+struct s_hash {
 	int n;
 	vector<ll> A, P;
 
-	substr_hash(string &s) {
+	s_hash(string &s) {
 		n = sz(s);
 		A.resize(n + 1);
 		P.resize(n + 1);
@@ -34,7 +34,7 @@ struct substr_hash {
 	}
 };
 
-bool compare(substr_hash &s1, substr_hash &s2, int a, int b, int c, int d) {
+bool compare(s_hash &s1, s_hash &s2, int a, int b, int c, int d) {
 	// Returns if s1[a, b] equals s2[c, d]
 	vector<ll> &P = s1.n > s2.n ? s1.P : s2.P;
 	ll v1 = s1.get_hash(a, b);
@@ -51,7 +51,7 @@ bool compare(substr_hash &s1, substr_hash &s2, int a, int b, int c, int d) {
 vi robin_karp(string &s, string &t) {
 	vi occ;
 	int S = sz(s), T = sz(t);
-	substr_hash sh(s);
+	s_hash sh(s);
 	ll h = get_hash(t), ch;
 	for (int i = 0; i + T - 1 < S; i++) {
 		ch = sh.get_hash(i, i + T - 1);
