@@ -22,10 +22,10 @@ void insert(string &s, int n = 0, int d = 0) {
 }
 
 bool search(string &s, int n = 0, int d = 0) {
-    if (d == sz(s))
+	if (d == sz(s))
 		return true;
-    for (int c : adj[n])
-    	if (val[c] == s[d])
+	for (int c : adj[n])
+		if (val[c] == s[d])
 			return search(s, c, d + 1);
 	return false;
 }
