@@ -49,19 +49,20 @@ void tarjan_scc() {
 }
 
 vi dag[MAXN];
-int scc_size[MAXN];
+int size[MAXN];
 
-void dag_scc() {
-	fill(scc_size, scc_size + scc_num, 0);
+void condense() {
+	fill(size, size + scc_num, 0);
 	for (int i = 1; i <= N; i++)
-		scc_size[scc[i]]++;
-	for (int i = 1; i <= N; i++)
+		size[scc[i]]++;
+	for (int i = 1; i <= N; i++) {
 		for (int c: adj[i])
 			if (scc[i] != scc[c])
 				dag[scc[i]].pb(scc[c]);
+	}
 }
 
 int main() {
 	tarjan_scc();
-	dag_scc();
+	condense();
 }

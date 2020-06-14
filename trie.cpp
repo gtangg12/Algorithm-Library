@@ -32,5 +32,5 @@ bool search(string &s, int n = 0, int d = 0) {
 
 int main() {
 	memset(val, -1, sizeof val);
-
+	
 }
