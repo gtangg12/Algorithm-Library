@@ -26,8 +26,8 @@ bool search(string &s, int n = 0, int d = 0) {
 		return true;
     for (int c : adj[n])
     	if (val[c] == s[d])
-    		return search(s, c, d + 1);
-    return false;
+			return search(s, c, d + 1);
+	return false;
 }
 
 int main() {
