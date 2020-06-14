@@ -43,9 +43,10 @@ void dfs(int n) {
 void tarjan_scc() {
 	memset(ent, -1, sizeof ent);
 	memset(low, -1, sizeof low);
-	for (int i = 1; i <= N; i++)
+	for (int i = 1; i <= N; i++) {
 		if (ent[i] == -1)
 			dfs(i);
+	}
 }
 
 vi dag[MAXN];
