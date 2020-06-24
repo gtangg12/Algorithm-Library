@@ -78,7 +78,6 @@ void init(mat &a, vd &b, vd &c) {
 		D[i].resize(N + M);
 		D[i][N + i] = 1;
 	}
-
 	for (int i = 0; i < N; i++)
 		C[i] *= -1;
 	C.resize(N + M);
