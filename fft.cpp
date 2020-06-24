@@ -37,8 +37,7 @@ void fft(vector<cd> &fa, bool inv) {
 }
 
 vi mult(vi &ca, vi &cb) {
-	vector<cd> fa(all(ca));
-	vector<cd> fb(all(cb));
+	vector<cd> fa(all(ca)), fb(all(cb));
 	int n = 1;
 	while (n < sz(ca) + sz(cb))
 		n <<= 1;
