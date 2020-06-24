@@ -62,11 +62,10 @@ int rref(mat &a, vd &sol) {
 			swap(a[sel][i], a[r][i]);
 		pivot[c] = r;
 		for (int i = 0; i < n; i++) {
-			if (i != r) {
-				double k = a[i][c] / a[r][c];
-				for (int j = c; j <= m; j++)
-					a[i][j] -= k * a[r][j];
-			}
+			if (i == r) continue;
+			double k = a[i][c] / a[r][c];
+			for (int j = c; j <= m; j++)
+			a[i][j] -= k * a[r][j];
 		}
 	}
 	sol.assign(m, 0);
