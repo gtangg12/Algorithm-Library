@@ -30,9 +30,8 @@ void decomp(int n, int p = -1) {
 	int cent = centroid(n, size[n]);
 	done[cent] = true;
 	cpar[cent] = p;
-	for (int c : adj[cent])
-		if (!done[c])
-			decomp(c, cent);
+	for (int c : adj[cent]) if (!done[c])
+		decomp(c, cent);
 }
 
 void build() {

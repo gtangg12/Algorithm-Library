@@ -51,8 +51,8 @@ int rref(mat &a, vd &sol) {
 	// Returns number of solutions
 	int n = sz(a), m = sz(a[0]) - 1;
 	vi pivot(m, -1);
-	for (int r = 0, c = 0; r < n && c < m; c++) {
-		int sel = r;
+	for (int r = -1, c = 0; r < n && c < m; c++) {
+		int sel = ++r;
 		for (int i = r; i < n; i++)
 			if (abs(a[i][c]) > abs(a[sel][c]))
 				sel = i;
@@ -68,7 +68,6 @@ int rref(mat &a, vd &sol) {
 					a[i][j] -= k * a[r][j];
 			}
 		}
-		r++;
 	}
 	sol.assign(m, 0);
 	for (int i = 0; i < m; i++)

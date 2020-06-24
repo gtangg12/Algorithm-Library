@@ -7,9 +7,7 @@ const int MAXN = 262144;
 int N, M;
 vi adj[MAXN];
 
-int ent[MAXN];
-int low[MAXN];
-int t = 0;
+int ent[MAXN], low[MAXN], t = 0;
 bool on_stk[MAXN];
 stack<int> stk;
 

@@ -4,7 +4,8 @@
 
 const int MAXN = 262144;
 
-int st_sum[4 * MAXN], lazy[4 * MAXN];
+int st_sum[4 * MAXN];
+int lazy[4 * MAXN];
 
 void pull(int i) {
 	st_sum[i] = st_sum[2 * i] + st_sum[2 * i + 1];

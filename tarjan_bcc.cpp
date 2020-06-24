@@ -7,13 +7,10 @@ const int MAXN = 262144;
 int N, M;
 vi adj[MAXN];
 
-int ent[MAXN];
-int low[MAXN];
-int t = 0;
+int ent[MAXN], low[MAXN], t = 0;
 stack<pi> stk;
 
-vi art;
-vpi bri;
+vi art; vpi bri;
 vi bcc[MAXN];
 int bcc_num = 0;
 
@@ -57,9 +54,10 @@ void dfs(int n, int p = -1) {
 void tarjan_bcc() {
 	memset(ent, -1, sizeof ent);
 	memset(low, -1, sizeof low);
-	for (int i = 1; i <= N; i++)
+	for (int i = 1; i <= N; i++) {
 		if (ent[i] == -1)
 			dfs(i);
+	}
 }
 
 bool biconnected(int u, int v) {

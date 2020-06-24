@@ -8,8 +8,7 @@ struct node {
 	int y = rand() ^ (rand() << 16);
 	int size = 1;
 	int x;
-	int sum;
-	int lazy = 0;
+	int sum, lazy = 0;
 	node *l = NULL, *r = NULL;
 
 	node(int x) : x(x), sum(x) {}

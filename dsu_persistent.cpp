@@ -4,7 +4,7 @@
 
 const int MAXN = 262144;
 
-pi par[MAXN]; // time, par
+pi par[MAXN]; // (time, par)
 vpi size[MAXN];
 
 int find(int v, int t) {

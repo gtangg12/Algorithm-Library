@@ -1,7 +1,7 @@
 // Convex Hull
 //
 // Uses Andrew's Monotone Chain Algorithm
-// Computes lower then upper hull after sorting by x)
+// Computes lower then upper hull after sorting by x
 
 #include "header.h"
 
