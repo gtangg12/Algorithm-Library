@@ -1,4 +1,7 @@
 // Splay Tree
+//
+// Most recently accessed elements are at the root
+// Worst case O(n) operations
 
 #include "header.h"
 
@@ -16,11 +19,11 @@ struct node {
 	}
 };
 
-void link(node *x, node *y, int d) {
-	if (x)
-		x->c[d] = y;
-	if (y)
-		y->p = x;
+void link(node *u, node *v, int d) {
+	if (u)
+		u->c[d] = v;
+	if (v)
+		v->p = u;
 }
 
 void rotate(node *t, int d) {

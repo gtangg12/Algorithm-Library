@@ -6,8 +6,8 @@
 
 struct node {
 	int y = rand() ^ (rand() << 16);
-	int size = 1;
 	int x;
+	int size = 1;
 	node *l = NULL, *r = NULL;
 
 	node(int x) : x(x) {}
