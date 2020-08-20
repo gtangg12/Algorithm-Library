@@ -11,8 +11,7 @@ int ent[MAXN], low[MAXN], t = 0;
 bool on_stk[MAXN];
 stack<int> stk;
 
-int scc_num = 0;
-int scc[MAXN];
+int scc[MAXN], scc_num = 0;
 
 void dfs(int n) {
 	ent[n] = low[n] = t++;

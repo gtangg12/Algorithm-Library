@@ -17,7 +17,7 @@ ll operator * (const ll p, const ll q) { return (p * q) % MOD; }
 int gcd(int a, int b) {
 	while (b) {
 		int t = a % b;
-        a = b, b = t;
+		a = b, b = t;
 	}
     return a;
 }

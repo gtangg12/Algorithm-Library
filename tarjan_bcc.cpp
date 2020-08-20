@@ -11,8 +11,7 @@ int ent[MAXN], low[MAXN], t = 0;
 stack<pi> stk;
 
 vi art; vpi bri;
-vi bcc[MAXN];
-int bcc_num = 0;
+vi bcc[MAXN], bcc_num = 0;
 
 void dfs(int n, int p = -1) {
 	ent[n] = low[n] = t++;

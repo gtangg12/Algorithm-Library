@@ -33,3 +33,17 @@ void setIO(string name) {
 	freopen((name + ".in").c_str(), "r", stdin);
 	freopen((name + ".out").c_str(), "w", stdout);
 }
+
+// =============== Customs Libraries ===============
+
+namespace bitmath {
+
+// add l for long, ll for long long
+#define popcnt __builtin_popcount
+#define onepar __builtin_parity 
+#define lzero __builtin_clz // x > 0
+#define tzero __builtin_clz // x > 0
+#define lsb(x) (x == 0 ? -1 : tzero(x))
+#define msb(x) (x == 0 ? -1 : sizeof(x) * 8 - lzero(x) - 1)
+
+}
