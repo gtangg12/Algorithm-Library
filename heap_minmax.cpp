@@ -73,7 +73,7 @@ void insert(int x) {
 		else
 			pull_max(size);
 	}
-	else { // mv level
+	else { // mn level
 		if (A[size] > A[size / 2]) {
 			swap(A[size], A[size / 2]);
 			pull_max(size / 2);
@@ -88,6 +88,8 @@ int peek_min() {
 }
 
 int peek_max() {
+	if (size == 1)
+		return A[1];
 	return max(A[2], A[3]);
 }
 
@@ -98,6 +100,10 @@ void pop_min() {
 }
 
 void pop_max() {
+	if (size == 1) {
+		pop_min();
+		return;
+	}
 	int i = A[2] > A[3] ? 2 : 3;
 	swap(A[i], A[size]);
 	A[size--] = NONE;
