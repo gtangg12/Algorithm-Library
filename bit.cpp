@@ -9,7 +9,7 @@ int N;
 int bit[MAXN];
 
 void point_upd(int i, int v) {
-	for (; i < MAXN; i = i | (i + 1))
+	for (; i < MAXN; i = i | (i + 1)) 
 		bit[i] += v;
 }
 

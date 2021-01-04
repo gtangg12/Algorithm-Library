@@ -34,7 +34,7 @@ const int INF = INT_MAX;
 	freopen((name + ".out").c_str(), "w", stdout) \
 
 // Multiple test cases from cin/cout
-#define MULTIPLE_TESTS() \
+#define MULTIPLE_TESTS \
 	int num_tests; \
 	cin >> num_tests; \
 	for (int cur_test = 0; cur_test < num_tests; cur_test++)
@@ -42,13 +42,12 @@ const int INF = INT_MAX;
 // =============== Customs Libraries ===============
 
 namespace bitmath {
-
 // add l for long, ll for long long
 #define popcnt __builtin_popcount
 #define onepar __builtin_parity
-#define lzero __builtin_clz // x > 0
-#define tzero __builtin_ctz // x > 0
+#define lzero __builtin_clz
+#define tzero __builtin_ctz
 #define lsb(x) (x == 0 ? -1 : tzero(x))
 #define msb(x) (x == 0 ? -1 : sizeof(x) * 8 - lzero(x) - 1)
-
+#define onebit(x) ((x & (x - 1)) == 0)
 }
