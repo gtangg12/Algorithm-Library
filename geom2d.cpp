@@ -5,13 +5,13 @@
 const double PI = 3.1415926;
 const double EPS = 1e-9;
 
-pd operator + (const pd p, const pd q) { return mp(p.f + q.f, p.s + q.s); }
-pd operator - (const pd p, const pd q) { return mp(p.f - q.f, p.s - q.s); }
-pd operator * (const double k, const pd p) { return mp(k * p.f, k * p.s); }
-pd operator / (const pd p, const double k) { return mp(p.f / k, p.s / k); }
+inline pd operator + (const pd p, const pd q) { return mp(p.f + q.f, p.s + q.s); }
+inline pd operator - (const pd p, const pd q) { return mp(p.f - q.f, p.s - q.s); }
+inline pd operator * (const double k, const pd p) { return mp(k * p.f, k * p.s); }
+inline pd operator / (const pd p, const double k) { return mp(p.f / k, p.s / k); }
 
-inline double len(pd p) { return sqrt(p.f * p.f + p.s * p.s); }
-inline pd norm(pd p) {return pd / len(pd); }
+inline double len(const pd p) { return sqrt(p.f * p.f + p.s * p.s); }
+inline pd norm(pd p) { return p / len(p); }
 inline double dot(pd p, pd q) { return p.f * q.f + p.s * q.s; }
 inline double cross(pd p, pd q) { return p.f * q.s - p.s * q.f; }
 
@@ -103,17 +103,17 @@ int isect_circles(pd p, double r1, pd q, double r2, vpd &isect) {
 	double t = len(q - p);
 	if (t > r1 + r2 + EPS || t < fabs(r1 - r2) - EPS)
 		return 0;
-	pd norm = (q - p) / t;
+	pd n = (q - p) / t;
 	double u = (r1 * r1 - r2 * r2 + t * t) / (2 * t);
-	pd mid = p + u * norm;
+	pd mid = p + u * n;
 	if (fabs(u - r1) < EPS) {
 		isect.pb(mid);
 		return 1;
 	}
 	double v = sqrt(r1 * r1 - u * u);
-	pd norm2 = rotate_ccw(norm, PI / 2);
-	isect.pb(mid + v * norm2);
-	isect.pb(mid - v * norm2);
+	pd n2 = rotate_ccw(n, PI / 2);
+	isect.pb(mid + v * n2);
+	isect.pb(mid - v * n2);
 	return 2;
 }
 
@@ -135,9 +135,9 @@ int isect_line_circle(pd a, pd b, pd p, double r, vpd &isect) {
 		return 1;
 	}
 	double t2 = sqrt(r * r - u * u / v);
-	pd norm = norm(b - a);
-	isect.pb(mid + t2 * norm + p);
-	isect.pb(mid - t2 * norm + p);
+	pd n = norm(b - a);
+	isect.pb(mid + t2 * n + p);
+	isect.pb(mid - t2 * n + p);
 	return 2;
 }
 
