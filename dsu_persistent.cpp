@@ -13,16 +13,17 @@ int find(int v, int t) {
 	return find(par[v].s, t);
 }
 
-void unite(int u, int v, int t) {
+bool unite(int u, int v, int t) {
 	// query in monotonic increasing t
 	int ur = find(u, t);
 	int vr = find(v, t);
-	if (ur == vr) return;
+	if (ur == vr) return false;
 	int ur_size = size[ur].back().s;
 	int vr_size = size[vr].back().s;
 	if (ur_size < vr_size) swap(ur, vr);
 	par[vr] = mp(t, ur);
 	size[ur].pb({t, ur_size + vr_size});
+	return true;
 }
 
 int size_at(int u, int t) {
