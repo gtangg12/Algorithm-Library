@@ -11,6 +11,7 @@ pd operator * (const double k, const pd p) { return mp(k * p.f, k * p.s); }
 pd operator / (const pd p, const double k) { return mp(p.f / k, p.s / k); }
 
 inline double len(pd p) { return sqrt(p.f * p.f + p.s * p.s); }
+inline pd norm(pd p) {return pd / len(pd); }
 inline double dot(pd p, pd q) { return p.f * q.f + p.s * q.s; }
 inline double cross(pd p, pd q) { return p.f * q.s - p.s * q.f; }
 
@@ -134,7 +135,7 @@ int isect_line_circle(pd a, pd b, pd p, double r, vpd &isect) {
 		return 1;
 	}
 	double t2 = sqrt(r * r - u * u / v);
-	pd norm = (b - a) / len(b - a);
+	pd norm = norm(b - a);
 	isect.pb(mid + t2 * norm + p);
 	isect.pb(mid - t2 * norm + p);
 	return 2;
