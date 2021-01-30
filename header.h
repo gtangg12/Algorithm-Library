@@ -7,7 +7,6 @@ using namespace std;
 typedef long long ll;
 typedef pair<int, int> pi;
 typedef pair<double, double> pd;
-typedef vector<bool> vb;
 typedef vector<int> vi;
 typedef vector<double> vd;
 typedef vector<pi> vpi;
@@ -34,10 +33,10 @@ const int INF = INT_MAX;
 	freopen((name + ".out").c_str(), "w", stdout) \
 
 // Multiple test cases from cin/cout
-#define MULTIPLE_TESTS \
-	int num_tests; \
-	cin >> num_tests; \
-	for (int cur_test = 0; cur_test < num_tests; cur_test++)
+#define MULT_TESTS \
+	int NUM_T; \
+	cin >> NUM_T; \
+	for (int CUR_T = 0; CUR_T < NUM_T; CUR_T++)
 
 // =============== Customs Libraries ===============
 

@@ -17,18 +17,12 @@ void unite(int u, int v, int t) {
 	// query in monotonic increasing t
 	int ur = find(u, t);
 	int vr = find(v, t);
-	if (ur == vr)
-		return;
+	if (ur == vr) return;
 	int ur_size = size[ur].back().s;
 	int vr_size = size[vr].back().s;
-	if (ur_size < vr_size) {
-		par[ur] = mp(t, vr);
-		size[vr].pb({t, ur_size + vr_size});
-	}
-	else {
-		par[vr] = mp(t, ur);
-		size[ur].pb({t, ur_size + vr_size});
-	}
+	if (ur_size < vr_size) swap(ur, vr);
+	par[vr] = mp(t, ur);
+	size[ur].pb({t, ur_size + vr_size});
 }
 
 int size_at(int u, int t) {
