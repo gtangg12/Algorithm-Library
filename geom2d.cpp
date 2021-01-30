@@ -6,6 +6,7 @@ const double PI = 3.1415926;
 const double EPS = 1e-9;
 
 inline pd operator + (const pd p, const pd q) { return mp(p.f + q.f, p.s + q.s); }
+inline pd operator - (const pd p) { return mp(-p.f, -p.s); }
 inline pd operator - (const pd p, const pd q) { return mp(p.f - q.f, p.s - q.s); }
 inline pd operator * (const double k, const pd p) { return mp(k * p.f, k * p.s); }
 inline pd operator / (const pd p, const double k) { return mp(p.f / k, p.s / k); }
