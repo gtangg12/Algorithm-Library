@@ -34,9 +34,8 @@ const int INF = INT_MAX;
 
 // Multiple test cases from cin/cout
 #define MULT_TESTS \
-	int NUM_T; \
-	cin >> NUM_T; \
-	for (int CUR_T = 0; CUR_T < NUM_T; CUR_T++)
+	int NUM_T; cin >> NUM_T; \
+	while (NUM_T--)
 
 // =============== Customs Libraries ===============
 
