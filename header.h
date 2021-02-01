@@ -25,6 +25,21 @@ typedef vector<pd> vpd;
 
 const int INF = INT_MAX;
 
+// Fast read/write
+void pr() {}
+
+template<typename T, typename ... Args>
+void pr(T a, const Args&... args) {
+    cout << a << ' '; pr(args...);
+}
+
+void re() {}
+
+template <typename T, typename... Args>
+void re(T& a, Args&... args) {
+    cin >> a; re(args...);
+}
+
 // Link file I/O to cin/cout
 #define SET_IO(name) \
 	ios_base::sync_with_stdio(0); \
