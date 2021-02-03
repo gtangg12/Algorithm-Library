@@ -30,7 +30,9 @@ void pr() {}
 
 template<typename T, typename ... Args>
 void pr(T a, const Args&... args) {
-    cout << a << ' '; pr(args...);
+    cout << a;
+    if (a != '\n') cout << ' ';
+    pr(args...);
 }
 
 void re() {}
